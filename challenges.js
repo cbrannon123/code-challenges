@@ -59,8 +59,11 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 
-
-
+addTwoNumbers = function (x, y) {
+  return (parseInt(x + y))
+    
+};
+console.log(addTwoNumbers("nan", 2));
 
 
 /*-----------------------------------------------------------------
@@ -82,7 +85,15 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 
-
+function sumNumbers(arry){
+  var sum = 0
+  for (var i = 0; i < arry.length; i++)
+  sum += arry[i]; 
+   return sum;
+  
+  } 
+  
+  console.log (sumNumbers([2, 2, 2]));
 
 
 
@@ -104,6 +115,14 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
+function addList() {
+  var sum = 0;
+  for (var i = 0; i < arguments.length; i++)
+  sum += arguments[i];
+  return sum;
+}
+
+console.log(addList(1, 2.7, 3))
 
 
 
@@ -128,6 +147,14 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
+function computeRemainder(num1, num2) {
+  if (num2 === 0) {
+    return Infinity
+  } else {
+  return (num1 % num2)
+  
+}
+};
 
 
 
@@ -151,6 +178,20 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
+function range(low, hi) {
+  var arr = [];
+  for(var i = low; i < hi; i += 1){
+    arr.push(i)
+  } 
+  if (low > hi) {
+    return ('First argument must be less than second');
+  } else {
+    return (arr);
+  }
+
+}
+
+
 
 
 
@@ -170,7 +211,10 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-
+function reverseUpcaseString(str) {
+  return str.split('').reverse().join('').toUpperCase()
+  }
+  console.log(reverseUpcaseString("reverse!"));
 
 
 
@@ -191,7 +235,14 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-
+function removeEnds(str) {
+  if(str.length < 3) {
+    return "";
+  } else {
+  return str.substr(1).slice(0, -1);
+  }
+}
+console.log(removeEnds("mass!"))
 
 
 
@@ -214,7 +265,19 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
+function charCount(str) {
+  const obj = {};
+ for(var i = 0; i < str.length; i++) 
+   if(obj.hasOwnProperty(str[i])) {
+     obj[str[i]] += 1;
+   } else {
+     obj[str[i]] = 1;
+   }
+   return obj;
+  
+}
 
+ console.log(charCount('hello'))
 
 
 
