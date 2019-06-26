@@ -304,9 +304,16 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
+function formatWithPadding(num, str, num2) {
+  let result = num.toFixed(0);
+  while (result.length < num2){
+  result = str + result
+  }
+  return result;
 
+}
 
-
+console.log(formatWithPadding(123, '0', 5));
 
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
