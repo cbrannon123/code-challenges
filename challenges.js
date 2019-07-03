@@ -14,7 +14,7 @@ sayHello() //=> Hello!
 // Your solution for 00-sayHello (example) here:
 
 function sayHello() {
-  return 'Hello!'
+    return 'Hello!'
 }
 
 
@@ -35,7 +35,7 @@ addOne(-5) //=> -4
 // Your solution for 01-addOne here:
 
 function addOne(num) {
-  return num + 1;
+    return num + 1;
 }
 
 
@@ -60,8 +60,8 @@ addTwoNumbers('Hello', 5) //=> NaN
 // Your solution for 02-addTwoNumbers here:
 
 addTwoNumbers = function (x, y) {
-  return (parseInt(x + y))
-    
+    return (parseInt(x + y))
+
 };
 console.log(addTwoNumbers("nan", 2));
 
@@ -85,15 +85,15 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 
-function sumNumbers(arry){
-  var sum = 0
-  for (var i = 0; i < arry.length; i++)
-  sum += arry[i]; 
-   return sum;
-  
-  } 
-  
-  console.log (sumNumbers([2, 2, 2]));
+function sumNumbers(arry) {
+    var sum = 0
+    for (var i = 0; i < arry.length; i++)
+        sum += arry[i];
+    return sum;
+
+}
+
+console.log(sumNumbers([2, 2, 2]));
 
 
 
@@ -116,10 +116,10 @@ add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
 function addList() {
-  var sum = 0;
-  for (var i = 0; i < arguments.length; i++)
-  sum += arguments[i];
-  return sum;
+    var sum = 0;
+    for (var i = 0; i < arguments.length; i++)
+        sum += arguments[i];
+    return sum;
 }
 
 console.log(addList(1, 2.7, 3))
@@ -148,12 +148,12 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 function computeRemainder(num1, num2) {
-  if (num2 === 0) {
-    return Infinity
-  } else {
-  return (num1 % num2)
-  
-}
+    if (num2 === 0) {
+        return Infinity
+    } else {
+        return (num1 % num2)
+
+    }
 };
 
 
@@ -179,15 +179,15 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 function range(low, hi) {
-  var arr = [];
-  for(var i = low; i < hi; i += 1){
-    arr.push(i)
-  } 
-  if (low > hi) {
-    return ('First argument must be less than second');
-  } else {
-    return (arr);
-  }
+    var arr = [];
+    for (var i = low; i < hi; i += 1) {
+        arr.push(i)
+    }
+    if (low > hi) {
+        return ('First argument must be less than second');
+    } else {
+        return (arr);
+    }
 
 }
 
@@ -212,9 +212,9 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
 function reverseUpcaseString(str) {
-  return str.split('').reverse().join('').toUpperCase()
-  }
-  console.log(reverseUpcaseString("reverse!"));
+    return str.split('').reverse().join('').toUpperCase()
+}
+console.log(reverseUpcaseString("reverse!"));
 
 
 
@@ -236,11 +236,11 @@ removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 function removeEnds(str) {
-  if(str.length < 3) {
-    return "";
-  } else {
-  return str.substr(1).slice(0, -1);
-  }
+    if (str.length < 3) {
+        return "";
+    } else {
+        return str.substr(1).slice(0, -1);
+    }
 }
 console.log(removeEnds("mass!"))
 
@@ -266,18 +266,18 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 function charCount(str) {
-  const obj = {};
- for(var i = 0; i < str.length; i++) 
-   if(obj.hasOwnProperty(str[i])) {
-     obj[str[i]] += 1;
-   } else {
-     obj[str[i]] = 1;
-   }
-   return obj;
-  
+    const obj = {};
+    for (var i = 0; i < str.length; i++)
+        if (obj.hasOwnProperty(str[i])) {
+            obj[str[i]] += 1;
+        } else {
+            obj[str[i]] = 1;
+        }
+    return obj;
+
 }
 
- console.log(charCount('hello'))
+console.log(charCount('hello'))
 
 
 
@@ -305,11 +305,11 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 // Your solution for 10-formatWithPadding here:
 
 function formatWithPadding(num, str, num2) {
-  let result = num.toFixed(0);
-  while (result.length < num2){
-  result = str + result
-  }
-  return result;
+    let result = num.toFixed(0);
+    while (result.length < num2) {
+        result = str + result
+    }
+    return result;
 
 }
 
@@ -336,7 +336,14 @@ isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
 
-
+function isPalindrome(str) {
+    str = str.toLowerCase();
+    while (str.includes(' ')) str = str.replace(' ', '');
+    for(var i = 0; i < Math.floor(str.length / 2); i++) {
+        if (str.charAt(i) !== str.charAt(str.length - i - 1)) return false;   
+    }
+    return true;
+}
 
 
 
@@ -362,6 +369,14 @@ hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
+function hammingDistance(str1, str2) {
+    if (str1.length !== str2.length) return NaN;
+    var num = 0;
+    for(var i =0; i < str1.length; i++) {
+        if(str1.charAt(i) !== str2.charAt(i)) num++;
+    }
+    return num;
+}
 
 
 
@@ -437,7 +452,7 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
 
-Difficulty:  Intermediate  
+Difficulty:  Intermediate
 
 Prompt:
 
@@ -455,7 +470,7 @@ findHighestPriced([
   { sku: 'c3', price: 50 },
   { sku: 'd4', price: 10 }
 ]);
-//=> { sku: 'c3', price: 50 } 
+//=> { sku: 'c3', price: 50 }
 
 findHighestPriced([
   { sku: 'a1', price: 25 },
@@ -560,7 +575,7 @@ Hint:
 Examples:
 
 flatten( [1, [2, 3]] );
-//=> [1, 2, 3]  (a new array) 
+//=> [1, 2, 3]  (a new array)
 
 flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
@@ -584,7 +599,7 @@ Prompt:
 Examples:
 
 isPrime(2) //=> true
-isPrime(3) //=> true 
+isPrime(3) //=> true
 isPrime(4) //=> false
 isPrime(29) //=> true
 isPrime(200) //=> false
