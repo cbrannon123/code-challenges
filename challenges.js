@@ -400,7 +400,13 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-
+function mumble(str) {
+    var output = '';
+    for(var i = 0; i < str.length; i++) {
+        output += ((i || '') && '-') + str.charAt(i).repeat(i + 1);
+    }
+    return output
+}
 
 
 
@@ -422,9 +428,13 @@ fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
 fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
-
-
-
+function fromPairs(arr) {
+    obj = {};
+    arr.forEach(function(keyVal) {
+        obj[keyVal[0]] = keyVal[1];
+    });
+    return obj;
+}
 
 
 /*-----------------------------------------------------------------
@@ -444,7 +454,9 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-
+function mergeObjects(tar, ...obj) {
+    return Object.assign(tar, ...obj);
+}
 
 
 
@@ -481,10 +493,17 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-
-
-
-
+function findHighestPriced(arr) {
+    var highPrice = 0;
+    var result;
+    arr.forEach(function(item) {
+        if (item.price > highPrice) {
+            highPrice = item.price;
+            result = item;
+        }
+    });
+    return result;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
