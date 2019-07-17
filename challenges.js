@@ -532,7 +532,13 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
 
-
+function mapArray(arr, cb) {
+    var newArr = [];
+    arr.forEach(function(e, id) {
+        newArr.push(cb(e, id) );
+    });
+    return newArr;
+}
 
 
 
@@ -569,6 +575,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
+function reduceArray(arr, cb, initAcc) {
+    var acc = initAcc;
+    arr.forEach(function(el, idx) {
+      acc = cb(acc, el, idx);
+    });
+    return acc;
+  }
 
 
 
@@ -600,7 +613,17 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-
+function flatten(arr) {
+    var flatArr = [];
+    arr.forEach(function(elem) {
+      if (Array.isArray(elem)) {
+        flatArr = flatArr.concat(flatten(elem));
+      } else {
+        flatArr.push(elem);
+      }
+    });
+    return flatArr;
+  }
 
 
 
@@ -625,7 +648,13 @@ isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
 
-
+function isPrime(n) {
+    if (n < 2 || !Number.isInteger(n)) return false;
+    for (var i = 2; i <= n / 2; i++) {
+      if (Number.isInteger(n / i)) return false;
+    }
+    return true;
+  }
 
 
 
@@ -653,7 +682,31 @@ primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
 
-
+function primeFactors(n) {
+    var factors = [];
+    if (n < 2 || !Number.isInteger(n)) return factors;
+    
+    function isPrime(n) {
+      if (n < 2 || !Number.isInteger(n)) return false;
+      for (var i = 2; i <= n / 2; i++) {
+        if (Number.isInteger(n / i)) return false;
+      }
+      return true;
+    }
+    var prime = 2;  // start with smallest prime
+  while (!isPrime(n)) {
+    if (Number.isInteger(n / prime)) {
+      factors.push(prime);
+      n = n / prime;
+    } else {
+      // find next prime
+      prime++;
+      while (!isPrime(prime)) prime++;
+    }
+  }
+  factors.push(n);
+  return factors;
+}
 
 
 
@@ -677,7 +730,15 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
-
+function intersection(a1, a2) {
+    var result = [];
+    var _a2 = [...a2];
+    a1.forEach(val => {
+        var idx = _a2.indexOf(val);
+        if (idx > -1) result.push(_a2.splice(idx, 1)[0]);
+    });
+    return result
+}
 
 
 
@@ -703,6 +764,21 @@ balancedBrackets( '[(])' ) // => false
 balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
+function balancedBrackets(str) {
+    if (str.length % 2) return false;
+    var stack = [];
+    for (var i = 0; i < str.length; i++) {
+        var b = str.charAt(i);
+        if ( '([{'.includes(b) ) {
+          // add opening brackets to the stack
+          stack.push(b);
+        } else {
+          // not an opening bracket, so remove last opening and check if matched
+          if (!'() {} []'.includes(stack.pop() + b)) return false;
+        }
+      }
+      return true;
+}
 
 
 
@@ -733,7 +809,17 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
-
+function isWinningTicket(ticket) {
+    var winner = true;
+    for (var i = 0; i < ticket.length; i++) {
+        var charNum = String.fromCharCode(ticket[i][1]);
+        if (!ticket[i][0].includes(charNum)) {
+            winner = false; 
+            break;
+        }
+     }
+     return winner;
+}
 
 
 
